@@ -1,0 +1,3 @@
+# Images folder for profile photos, logos, etc.
+# These files are processed by Angular build system
+# Usage: assets/images/filename.jpg

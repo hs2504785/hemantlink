@@ -1,0 +1,3 @@
+# Documents folder for resumes, PDFs, etc.
+# These files are served through Angular's asset pipeline
+# Usage: assets/documents/resume.pdf

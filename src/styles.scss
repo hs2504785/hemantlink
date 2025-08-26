@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+// ================================================
+// MAIN STYLESHEET - IMPORTS ONLY
+// ================================================
+
+// Bootstrap 5 Import
+@use 'bootstrap/scss/bootstrap';
+
+// Themify Icons - Using local version from public/
+// Import is handled in index.html to avoid build issues
+
+// ================================================
+// ABSTRACTS - Variables, Mixins, Functions
+// ================================================
+@use 'styles/abstracts' as *;
+
+// ================================================
+// BASE - Reset, Global styles, Typography
+// ================================================
+@use 'styles/base/global';
+@use 'styles/base/animations';
+
+// ================================================
+// THEMES - Theme definitions and overrides
+// ================================================
+@use 'styles/themes/themes';
+
+// ================================================
+// COMPONENTS - Reusable component styles
+// ================================================
+@use 'styles/components/buttons';
+@use 'styles/components/cards';
+@use 'styles/components/layout';

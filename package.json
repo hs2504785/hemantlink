@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "npm run uncss",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:hemantlink": "node dist/hemantlink/server/server.mjs"
+    "serve:ssr:hemantlink": "node dist/hemantlink/server/server.mjs",
+    "uncss": "node tools/scripts/uncss.js"
   },
   "prettier": {
     "printWidth": 100,
@@ -30,7 +32,9 @@
     "@angular/platform-browser": "^20.2.0",
     "@angular/platform-server": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "@angular/service-worker": "^20.2.0",
     "@angular/ssr": "^20.2.0",
+    "bootstrap": "^5.3.8",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -48,6 +52,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "purgecss": "^7.0.2",
     "typescript": "~5.9.2"
   }
 }
