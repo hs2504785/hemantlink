@@ -9,8 +9,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:hemantlink": "node dist/hemantlink/server/server.mjs",
-    "uncss": "node tools/scripts/uncss.js",
-    "build:gh-pages": "ng build --configuration github-pages",
+    "uncss": "node tools/scripts/uncss.js dist/hemantlink/browser",
+    "build:gh-pages": "ng build --configuration github-pages && npm run uncss:gh-pages",
+    "uncss:gh-pages": "node tools/scripts/uncss.js dist/github-pages/browser",
     "deploy:gh-pages": "npm run build:gh-pages && npx angular-cli-ghpages --dir=dist/github-pages/browser",
     "deploy:gh-pages-force": "npm run build:gh-pages && npx angular-cli-ghpages --dir=dist/github-pages/browser --no-silent"
   },
