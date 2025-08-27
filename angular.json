@@ -69,6 +69,25 @@
                 }
               ],
               "outputHashing": "all",
+              "prerender": true,
+              "server": "src/main.server.ts",
+              "baseHref": "/hemantlink/",
+              "outputPath": "dist/github-pages"
+            },
+            "github-pages-with-sw": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
               "serviceWorker": "ngsw-config.json",
               "prerender": true,
               "server": "src/main.server.ts",
