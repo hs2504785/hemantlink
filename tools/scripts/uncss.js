@@ -3,10 +3,16 @@ const { statSync, readFileSync, writeFileSync } = require('fs');
 const { join } = require('path');
 const { PurgeCSS } = require('purgecss');
 
-const config = require('./purge.config.js');
+const createPurgeConfig = require('./purge.config.js');
 
 async function main() {
   try {
+    // Get source directory from command line argument or use default
+    const sourceDir = process.argv[2] || 'dist/hemantlink/browser';
+    const config = createPurgeConfig(sourceDir);
+
+    console.log(`Processing CSS files in: ${sourceDir}`);
+
     // find the styles css file
     const files = await getFilesFromPath(config.sourceDir, '.css');
     const data = [];
