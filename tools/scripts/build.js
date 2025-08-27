@@ -92,16 +92,16 @@ async function main() {
         const swCommand = `npx ngsw-config ${config.outputDir} ngsw-config.json`;
         console.log(`🔧 Running: ${swCommand}`);
         execSync(swCommand, { stdio: 'inherit' });
-        
+
         // Copy service worker files from Angular
         console.log('📋 Copying service worker files...');
         const { copyFileSync } = require('fs');
         const path = require('path');
-        
-        const workerSourceDir = path.join('node_modules', '@angular', 'service-worker', 'worker');
+
+        const workerSourceDir = path.join('node_modules', '@angular', 'service-worker');
         const workerFiles = ['ngsw-worker.js', 'safety-worker.js'];
-        
-        workerFiles.forEach(file => {
+
+        workerFiles.forEach((file) => {
           const sourcePath = path.join(workerSourceDir, file);
           const destPath = path.join(config.outputDir, file);
           try {
@@ -111,15 +111,15 @@ async function main() {
             console.warn(`⚠️  Could not copy ${file}:`, error.message);
           }
         });
-        
+
         // Apply base href fixes if needed for GitHub Pages
         if (buildType === 'github-pages') {
           console.log(`🔧 Fixing service worker paths for base href: ${config.baseHref}`);
-          
+
           const ngsWPath = join(config.outputDir, 'ngsw.json');
           const { readFileSync, writeFileSync } = require('fs');
           const ngsWConfig = JSON.parse(readFileSync(ngsWPath, 'utf8'));
-          
+
           // Function to update paths with base href
           function updatePaths(obj, baseHref) {
             if (typeof obj === 'string' && obj.startsWith('/') && !obj.startsWith(baseHref)) {
@@ -137,12 +137,12 @@ async function main() {
             }
             return obj;
           }
-          
+
           const updatedConfig = updatePaths(ngsWConfig, config.baseHref);
           writeFileSync(ngsWPath, JSON.stringify(updatedConfig, null, 2));
           console.log('✅ Service worker paths updated for GitHub Pages');
         }
-        
+
         console.log('✅ Service worker generated successfully');
       } catch (error) {
         console.warn('⚠️  Service worker generation failed, continuing without it');
