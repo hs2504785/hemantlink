@@ -3,14 +3,9 @@ const { statSync, readFileSync, writeFileSync } = require('fs');
 const { join } = require('path');
 const { PurgeCSS } = require('purgecss');
 
-const getConfig = require('./purge.config.js');
+const config = require('./purge.config.js');
 
 async function main() {
-  // Allow directory to be passed as command line argument
-  const targetDir = process.argv[2] || 'dist/hemantlink/browser';
-
-  // Get shared configuration
-  const config = getConfig(targetDir);
   try {
     // find the styles css file
     const files = await getFilesFromPath(config.sourceDir, '.css');

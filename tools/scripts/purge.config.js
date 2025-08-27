@@ -1,66 +1,71 @@
+const sourceDir = 'dist/hemantlink/browser';
+
 /**
  * Shared configuration for PurgeCSS and UnCSS
- * 
- * @param {string} sourceDir - The directory containing built files
  */
-module.exports = (sourceDir = 'dist/hemantlink/browser') => ({
+module.exports = {
   // Source directory for built files
   sourceDir,
 
   // Files to analyze for used CSS
-  content: [`${sourceDir}/index.html`, `${sourceDir}/*.js`],
+  content: [
+    `${sourceDir}/index.html`,
+    `${sourceDir}/*.js`,
+    // Also analyze TypeScript source files for better class detection
+    'src/**/*.ts',
+    'src/**/*.html',
+    // Include Angular component templates and styles
+    'src/**/*.component.ts',
+    'src/**/*.component.html',
+  ],
 
   // CSS files to process
   css: [`${sourceDir}/*.css`],
 
-  // Safelist configuration - preserves theme and dynamic CSS
+  // Safelist configuration - ONLY dynamic CSS that PurgeCSS can't detect
   safelist: {
+    // Only truly dynamic selectors
     standard: [
-      // Theme toggle classes
-      'theme-toggle',
-      'icon-colorful',
-      
-      // Theme-specific icons and dynamic classes
-      'ti-sun', 'ti-moon', 'ti-palette',
-      'ti-github', 'ti-linkedin', 'ti-world', 'ti-download', 'ti-file',
-      'ti-envelope', 'ti-calendar', 'ti-pencil', 'ti-pencil-alt', 'ti-youtube',
-      'ti-twitter', 'ti-instagram', 'ti-phone', 'ti-location-pin', 'ti-link',
-      'ti-id-badge', 'ti-external-link',
-      
-      // Bootstrap utility classes that might be applied dynamically
-      'text-muted', 'fw-semibold', 'fs-6', 'mb-0', 'mb-2', 'mb-3', 'mb-4',
-      'p-4', 'text-center', 'rounded-circle', 'shadow-sm', 'border-0',
-      
-      // Card and layout classes
-      'card', 'card-body', 'card-title', 'card-subtitle', 'card-text',
-      'link-item', 'link-icon', 'link-content', 'link-title', 'link-description',
-      'link-external', 'empty-state', 'profile-card'
+      // Theme attribute selectors (applied via JavaScript)
+      '[data-theme="dark"]',
+      '[data-theme="purple"]',
+      ':root:not([data-theme])',
+
+      // Angular-generated component selectors (generated at build time)
+      /^_ngcontent-ng-c\d+$/,
+      /^_nghost-ng-c\d+$/,
     ],
-    deep: [
-      // Deep selector patterns for theme-specific styling
-      /data-theme/,
-      /\[data-theme/,
-      /theme-toggle/,
-      /icon-colorful/
-    ],
+
+    // Deep selectors for theme-dependent nested styles
+    deep: [/\[data-theme="dark"\]/, /\[data-theme="purple"\]/, /:root:not\(\[data-theme\]\)/],
+
+    // Minimal greedy patterns for dynamic content
     greedy: [
-      // Greedy patterns for dynamic theme classes
-      /^data-theme/,
-      /\[data-theme=['"]dark['"]\]/,
-      /\[data-theme=['"]purple['"]\]/,
-      /\[data-theme=['"]light['"]\]/,
-      /theme/,
-      /toggle/
+      /data-theme/,
+      /prefers-color-scheme/,
+      /_ng/, // Angular component selectors
     ],
+
+    // CSS variables (might not be detected properly by PurgeCSS)
     variables: [
-      // CSS custom properties
-      '--primary-bg', '--secondary-bg', '--card-bg', '--primary-text', '--secondary-text',
-      '--accent', '--accent-hover', '--border-color', '--shadow', '--shadow-sm',
-      '--shadow-md', '--shadow-lg', '--shadow-xl'
+      '--primary-bg',
+      '--secondary-bg',
+      '--card-bg',
+      '--primary-text',
+      '--secondary-text',
+      '--accent',
+      '--accent-hover',
+      '--border-color',
+      '--shadow',
+      '--shadow-sm',
+      '--shadow-lg',
+      '--shadow-xl',
+      '--transition',
+      '--border-radius',
     ],
-    keyframes: [
-      'fadeInUp', 'gradient-shift'
-    ],
+
+    // Keyframes (might not be detected if referenced in CSS variables)
+    keyframes: ['fadeInUp', 'fadeIn', 'bounce', 'gradient-shift'],
   },
 
   // PurgeCSS options
@@ -70,4 +75,4 @@ module.exports = (sourceDir = 'dist/hemantlink/browser') => ({
     fontFace: true,
     rejected: true, // This helps with debugging by showing which selectors were removed
   },
-});
+};
