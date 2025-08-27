@@ -5,8 +5,10 @@
 // Bootstrap 5 Import
 @use 'bootstrap/scss/bootstrap';
 
-// Themify Icons - Using local version from public/
-// Import is handled in index.html to avoid build issues
+// ================================================
+// VENDOR - Third-party libraries
+// ================================================
+@use 'styles/vendor/themify-icons';
 
 // ================================================
 // ABSTRACTS - Variables, Mixins, Functions
