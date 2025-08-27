@@ -1,14 +1,13 @@
 // ================================================
 // MAIN STYLESHEET - IMPORTS ONLY
-// ================================================
-
-// Bootstrap 5 Import
-@use 'bootstrap/scss/bootstrap';
 
 // ================================================
 // VENDOR - Third-party libraries
 // ================================================
 @use 'styles/vendor/themify-icons';
+
+// Bootstrap 5 Import
+@use 'bootstrap/scss/bootstrap';
 
 // ================================================
 // ABSTRACTS - Variables, Mixins, Functions

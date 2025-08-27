@@ -13,6 +13,7 @@
 const { execSync } = require('child_process');
 const { existsSync, unlinkSync } = require('fs');
 const { join } = require('path');
+const { fixGitHubPagesPaths } = require('./fix-github-pages-paths');
 
 // Configuration for different build types
 const BUILD_CONFIGS = {
@@ -77,6 +78,11 @@ async function main() {
       }
     } else {
       console.log('\n⏭️  Skipping CSS optimization');
+    }
+
+    // Step 2.5: Fix GitHub Pages paths (if applicable)
+    if (buildType === 'github-pages') {
+      fixGitHubPagesPaths(config.outputDir, config.baseHref);
     }
 
     // Step 3: Cleanup (if applicable)
