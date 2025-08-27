@@ -9,7 +9,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:hemantlink": "node dist/hemantlink/server/server.mjs",
-    "uncss": "node tools/scripts/uncss.js"
+    "uncss": "node tools/scripts/uncss.js",
+    "build:gh-pages": "ng build --configuration github-pages",
+    "deploy:gh-pages": "npm run build:gh-pages && npx angular-cli-ghpages --dir=dist/github-pages/browser",
+    "deploy:gh-pages-force": "npm run build:gh-pages && npx angular-cli-ghpages --dir=dist/github-pages/browser --no-silent"
   },
   "prettier": {
     "printWidth": 100,
@@ -46,6 +49,7 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

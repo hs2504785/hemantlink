@@ -55,6 +55,27 @@
               "outputHashing": "all",
               "serviceWorker": "ngsw-config.json"
             },
+            "github-pages": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json",
+              "outputMode": "static",
+              "server": false,
+              "ssr": false,
+              "baseHref": "/hemantlink/",
+              "outputPath": "dist/github-pages"
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
