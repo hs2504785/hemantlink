@@ -28,7 +28,7 @@ import { CardComponent } from '../../shared/ui/card.component';
             class="rounded-circle bg-light shadow-sm d-flex align-items-center justify-content-center"
             style="width: 120px; height: 120px;"
           >
-            <i class="ti-id-badge fs-1 text-muted"></i>
+            <i class="ti-id-badge fs-1 text-muted icon-colorful"></i>
           </div>
           }
         </div>

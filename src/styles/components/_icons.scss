@@ -1,0 +1,304 @@
+// ================================================
+// COLORFUL ICON STYLES
+// ================================================
+
+@use '../abstracts' as *;
+
+// Base icon styling
+.icon-colorful {
+  transition: var(--transition);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+
+  // Ensure icons remain colorful on hover
+  .link-item:hover & {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+}
+
+// Brand-specific icon colors (light outline style)
+.ti-github {
+  color: #6e5494;
+
+  [data-theme='dark'] & {
+    color: #8b7bb8;
+  }
+
+  [data-theme='purple'] & {
+    color: #5e4037;
+  }
+}
+
+.ti-linkedin {
+  color: #0077b5;
+
+  [data-theme='dark'] & {
+    color: #4fc3f7;
+  }
+
+  [data-theme='purple'] & {
+    color: #1565c0;
+  }
+}
+
+.ti-world {
+  color: #28a745;
+
+  [data-theme='dark'] & {
+    color: #66bb6a;
+  }
+
+  [data-theme='purple'] & {
+    color: #2e7d32;
+  }
+}
+
+.ti-download,
+.ti-file {
+  color: #dc3545;
+
+  [data-theme='dark'] & {
+    color: #ef5350;
+  }
+
+  [data-theme='purple'] & {
+    color: #c62828;
+  }
+}
+
+.ti-envelope {
+  color: #fd7e14;
+
+  [data-theme='dark'] & {
+    color: #ffb74d;
+  }
+
+  [data-theme='purple'] & {
+    color: #ef6c00;
+  }
+}
+
+.ti-calendar {
+  color: #6f42c1;
+
+  [data-theme='dark'] & {
+    color: #9575cd;
+  }
+
+  [data-theme='purple'] & {
+    color: #512da8;
+  }
+}
+
+.ti-pencil-alt,
+.ti-pencil {
+  color: #20c997;
+
+  [data-theme='dark'] & {
+    color: #4db6ac;
+  }
+
+  [data-theme='purple'] & {
+    color: #00695c;
+  }
+}
+
+.ti-youtube {
+  color: #ff0000;
+
+  [data-theme='dark'] & {
+    color: #ff5252;
+  }
+
+  [data-theme='purple'] & {
+    color: #d32f2f;
+  }
+}
+
+.ti-twitter {
+  color: #1da1f2;
+
+  [data-theme='dark'] & {
+    color: #42a5f5;
+  }
+
+  [data-theme='purple'] & {
+    color: #1976d2;
+  }
+}
+
+.ti-instagram {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  [data-theme='dark'] & {
+    background: linear-gradient(
+      45deg,
+      #fd79a8 0%,
+      #e84393 25%,
+      #fd79a8 50%,
+      #fdcb6e 75%,
+      #e17055 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  [data-theme='purple'] & {
+    background: linear-gradient(
+      45deg,
+      #8e24aa 0%,
+      #7b1fa2 25%,
+      #6a1b9a 50%,
+      #4a148c 75%,
+      #311b92 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.ti-phone {
+  color: #17a2b8;
+
+  [data-theme='dark'] & {
+    color: #4dd0e1;
+  }
+
+  [data-theme='purple'] & {
+    color: #0097a7;
+  }
+}
+
+.ti-location-pin {
+  color: #ffc107;
+
+  [data-theme='dark'] & {
+    color: #ffee58;
+  }
+
+  [data-theme='purple'] & {
+    color: #ff8f00;
+  }
+}
+
+.ti-link {
+  color: #6c757d;
+
+  [data-theme='dark'] & {
+    color: #90a4ae;
+  }
+
+  [data-theme='purple'] & {
+    color: #455a64;
+  }
+}
+
+// Theme toggle icons
+.ti-sun {
+  color: #ffc107;
+
+  [data-theme='dark'] & {
+    color: #ffee58;
+  }
+
+  [data-theme='purple'] & {
+    color: #ff8f00;
+  }
+}
+
+.ti-moon {
+  color: #6f42c1;
+
+  [data-theme='dark'] & {
+    color: #9575cd;
+  }
+
+  [data-theme='purple'] & {
+    color: #512da8;
+  }
+}
+
+.ti-palette {
+  background: linear-gradient(
+    45deg,
+    #e91e63,
+    #9c27b0,
+    #673ab7,
+    #3f51b5,
+    #2196f3,
+    #00bcd4,
+    #009688,
+    #4caf50,
+    #8bc34a,
+    #cddc39,
+    #ffeb3b,
+    #ffc107,
+    #ff9800,
+    #ff5722
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// Profile placeholder icon
+.ti-id-badge {
+  color: var(--accent);
+
+  [data-theme='dark'] & {
+    color: #bb86fc;
+  }
+
+  [data-theme='purple'] & {
+    color: #9c27b0;
+  }
+}
+
+// External link indicator
+.ti-external-link {
+  color: var(--secondary-text);
+
+  .link-item:hover & {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+// Hover effects for colorful icons
+.link-item {
+  .icon-colorful {
+    transform: scale(1);
+    transition: transform var(--transition), filter var(--transition);
+  }
+
+  &:hover .icon-colorful {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  }
+}
+
+// Empty state icon
+.empty-state .ti-link {
+  opacity: 0.6;
+}

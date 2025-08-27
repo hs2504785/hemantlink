@@ -8,7 +8,7 @@ import { AVAILABLE_THEMES } from '../../core/models/theme.model';
   imports: [],
   template: `
     <button class="theme-toggle" (click)="toggleTheme()" [title]="getButtonTitle()" type="button">
-      <i [class]="getCurrentThemeIcon()"></i>
+      <i [class]="getCurrentThemeIcon() + ' icon-colorful'"></i>
     </button>
   `,
   styles: [
@@ -21,8 +21,16 @@ import { AVAILABLE_THEMES } from '../../core/models/theme.model';
         height: 3rem;
         border-radius: 50%;
         border: 2px solid var(--accent);
-        background-color: var(--accent);
-        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+
+        [data-theme='dark'] & {
+          background-color: rgba(42, 42, 42, 0.9);
+        }
+
+        [data-theme='purple'] & {
+          background-color: rgba(255, 255, 255, 0.95);
+        }
         display: flex;
         align-items: center;
         justify-content: center;
@@ -32,10 +40,18 @@ import { AVAILABLE_THEMES } from '../../core/models/theme.model';
         box-shadow: var(--shadow-xl);
 
         &:hover {
-          background-color: var(--accent-hover);
+          background-color: rgba(255, 255, 255, 1);
           border-color: var(--accent-hover);
           transform: scale(1.1);
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+          [data-theme='dark'] & {
+            background-color: rgba(42, 42, 42, 1);
+          }
+
+          [data-theme='purple'] & {
+            background-color: rgba(255, 255, 255, 1);
+          }
         }
 
         &:focus-visible {
@@ -45,8 +61,7 @@ import { AVAILABLE_THEMES } from '../../core/models/theme.model';
 
         i {
           font-size: 1.25rem;
-          color: #ffffff;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
         }
       }
 

@@ -27,7 +27,7 @@ import {
           >
             <!-- Link Icon -->
             <div class="link-icon">
-              <i [class]="link.icon || 'ti-link'"></i>
+              <i [class]="(link.icon || 'ti-link') + ' icon-colorful'"></i>
             </div>
 
             <!-- Link Content -->
@@ -51,7 +51,7 @@ import {
       } @else {
       <!-- Empty State -->
       <div class="empty-state text-center py-5">
-        <i class="ti-link display-1 text-muted mb-3"></i>
+        <i class="ti-link display-1 text-muted mb-3 icon-colorful"></i>
         <h4 class="text-muted">No links available</h4>
         <p class="text-muted">Configure your links in the profile config file.</p>
       </div>
