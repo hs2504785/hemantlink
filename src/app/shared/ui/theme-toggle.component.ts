@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { ThemeService } from '../../core/services/theme.service';
-import { AVAILABLE_THEMES } from '../../core/models/theme.model';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -20,37 +19,43 @@ import { AVAILABLE_THEMES } from '../../core/models/theme.model';
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
-        border: 2px solid var(--accent);
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.9);
 
         [data-theme='dark'] & {
-          background-color: rgba(42, 42, 42, 0.9);
+          background: rgba(42, 42, 42, 0.9);
+          border-color: rgba(255, 255, 255, 0.1);
         }
 
         [data-theme='purple'] & {
-          background-color: rgba(255, 255, 255, 0.95);
+          background: rgba(255, 255, 255, 0.9);
+          border-color: rgba(156, 39, 176, 0.2);
         }
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         z-index: 1000;
-        box-shadow: var(--shadow-xl);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        [data-theme='dark'] & {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
 
         &:hover {
-          background-color: rgba(255, 255, 255, 1);
-          border-color: var(--accent-hover);
-          transform: scale(1.1);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          background: rgba(255, 255, 255, 1);
+          border-color: var(--accent);
+          transform: scale(1.05);
 
           [data-theme='dark'] & {
-            background-color: rgba(42, 42, 42, 1);
+            background: rgba(42, 42, 42, 1);
+            border-color: rgba(187, 134, 252, 0.3);
           }
 
           [data-theme='purple'] & {
-            background-color: rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(156, 39, 176, 0.4);
           }
         }
 
@@ -60,8 +65,13 @@ import { AVAILABLE_THEMES } from '../../core/models/theme.model';
         }
 
         i {
-          font-size: 1.25rem;
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+          font-size: 1.2rem;
+          color: var(--accent);
+          transition: color 0.2s ease;
+        }
+
+        &:hover i {
+          color: var(--accent-hover);
         }
       }
 
@@ -88,14 +98,12 @@ export class ThemeToggleComponent {
   }
 
   getCurrentThemeIcon(): string {
-    const currentTheme = this.themeService.currentTheme();
-    const themeConfig = AVAILABLE_THEMES.find((theme) => theme.value === currentTheme);
-    return themeConfig?.icon || 'ti-sun';
+    const themeConfig = this.themeService.getThemeConfig();
+    return themeConfig?.icon || 'ti-light-bulb';
   }
 
   getButtonTitle(): string {
-    const currentTheme = this.themeService.currentTheme();
-    const themeConfig = AVAILABLE_THEMES.find((theme) => theme.value === currentTheme);
+    const themeConfig = this.themeService.getThemeConfig();
     return `Current theme: ${themeConfig?.label || 'Light'}. Click to switch.`;
   }
 }

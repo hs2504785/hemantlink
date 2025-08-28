@@ -1,0 +1,30 @@
+// ================================================
+// PURPLE THEME
+// ================================================
+
+// Purple theme CSS custom properties
+[data-theme='purple'] {
+  --primary-bg: #f3e5f5;
+  --secondary-bg: #e1bee7;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --primary-text: #2e003e;
+  --secondary-text: #6a1b9a;
+  --accent: #9c27b0;
+  --accent-hover: #7b1fa2;
+  --border-color: #ce93d8;
+  --shadow: 0 0.125rem 0.25rem rgba(156, 39, 176, 0.2);
+  --shadow-sm: 0 0.125rem 0.5rem rgba(156, 39, 176, 0.15);
+  --shadow-md: 0 0.25rem 1rem rgba(156, 39, 176, 0.2);
+  --shadow-lg: 0 1rem 3rem rgba(156, 39, 176, 0.3);
+  --shadow-xl: 0 1.5rem 4rem rgba(156, 39, 176, 0.35);
+}
+
+// Purple theme component overrides
+[data-theme='purple'] {
+  .demo-notice {
+    background-color: rgba(156, 39, 176, 0.1);
+    border-color: rgba(156, 39, 176, 0.3);
+  }
+
+  /* Use consistent outline/shadow hover instead of background fill */
+}

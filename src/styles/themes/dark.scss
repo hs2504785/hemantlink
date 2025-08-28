@@ -1,0 +1,52 @@
+// ================================================
+// DARK THEME
+// ================================================
+
+// Dark theme CSS custom properties
+[data-theme='dark'] {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --card-bg: #2a2a2a;
+  --primary-text: #ffffff;
+  --secondary-text: #b3b3b3;
+  --accent: #bb86fc;
+  --accent-hover: #985eff;
+  --border-color: #333333;
+  --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 0.25rem 1rem rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+}
+
+// Dark theme component overrides
+[data-theme='dark'] {
+  .demo-notice {
+    background-color: rgba(187, 134, 252, 0.1);
+    border-color: rgba(187, 134, 252, 0.3);
+  }
+
+  .loading-overlay {
+    backdrop-filter: blur(8px);
+    background-color: rgba(18, 18, 18, 0.9);
+  }
+}
+
+// Auto theme based on system preference (fallback for no data-theme attribute)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary-bg: #121212;
+    --secondary-bg: #1e1e1e;
+    --card-bg: #2a2a2a;
+    --primary-text: #ffffff;
+    --secondary-text: #b3b3b3;
+    --accent: #bb86fc;
+    --accent-hover: #985eff;
+    --border-color: #333333;
+    --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 0.25rem 1rem rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+  }
+}

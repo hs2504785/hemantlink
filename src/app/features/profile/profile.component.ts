@@ -102,9 +102,6 @@ export class ProfileComponent {
 
   protected onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
-    console.error('❌ Profile image failed to load:', img.src);
-    console.error('❌ Full image URL:', img.src);
-    console.error('❌ Config path:', this.profileData.profileImage);
 
     // Hide the broken image
     img.style.display = 'none';

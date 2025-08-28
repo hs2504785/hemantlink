@@ -216,6 +216,5 @@ export function trackLinkClick(linkId: string, url: string): void {
     (window as any).plausible('Link Click', { props: { linkId, url } });
   }
 
-  // Console log for development
-  console.log(`Link clicked: ${linkId} -> ${url}`);
+  // Silent in production
 }

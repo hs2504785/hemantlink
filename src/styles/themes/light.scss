@@ -1,0 +1,35 @@
+// ================================================
+// LIGHT THEME
+// ================================================
+
+// Light theme (default) - CSS custom properties
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8f9fa;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --primary-text: #212529;
+  --secondary-text: #6c757d;
+  --accent: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #dee2e6;
+  --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-sm: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --shadow-xl: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+
+  // Transition
+  --transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+// Light theme component overrides
+.demo-notice {
+  background-color: rgba(0, 123, 255, 0.1);
+  border-color: rgba(0, 123, 255, 0.3);
+}
+
+.loading-overlay {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
